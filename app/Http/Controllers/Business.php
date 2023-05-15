@@ -19,6 +19,14 @@ class Business extends Controller
         return response()->json($response);
     }
 
+    public function search(Request $request)
+    {
+        $params = $request->all();
+        $data = BusinessModel::where($params)->get();
+        $response = ApiFormatter::createApi(200, 'success', $data);
+        return response()->json($response);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
